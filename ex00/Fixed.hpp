@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 20:17:02 by mmateo-t          #+#    #+#             */
-/*   Updated: 2022/04/21 20:20:22 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2022/04/25 13:02:03 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@ private:
 	int integer;
 	static const int fract_bits = 8;
 public:
-	Fixed(/* args */);
-	Fixed( Fixed );
+	Fixed();
+	Fixed(const Fixed& );
+	Fixed& operator= (const Fixed& );
 	~Fixed();
 	int getRawBits( void ) const;
-	void setRawBits ( int const raw );
+	void setRawBits ( int const );
 };
