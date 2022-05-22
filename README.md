@@ -5,8 +5,4 @@
 
 For more info, click the link below ⬇️
 
-<<<<<<< HEAD
 [CPP Module 02 - ES_Subject](es.subject_cpp02.pdf)
-=======
-[CPP Module 02 - ES_Subject](es_subject_cpp02.pdf)
->>>>>>> 6df72465542f25052ba3d5e668edb14e39a09f79
