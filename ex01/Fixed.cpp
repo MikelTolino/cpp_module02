@@ -6,54 +6,44 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 20:17:11 by mmateo-t          #+#    #+#             */
-/*   Updated: 2022/04/27 12:36:21 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2022/05/23 12:09:30 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <iostream>
 
-Fixed::Fixed()
+Fixed::Fixed() : _value(0)
 {
-	this->integer = 0;
 	std::cout << "Default constructor called\n";
 }
 
-Fixed::Fixed(const int integer )
+Fixed::Fixed(int const n)
 {
-	int fpart = 0;
-	int fract = integer;
-	fract = fract << fract_bits;
-	this->integer = integer >> fract_bits;
-	int i = -1;
-	while (fract)
-	{
-		if (fract % 2)
-		{
-			fpart += (int) pow(2, i);
-		}
-		fract /= 2;
-	}
-	std::cout << "<Integer>.<fractional>\n" << this->integer << "." << fpart << "\n";
-}
-
-Fixed::Fixed(const float integer )
-{
-	this->integer = (int) integer;
+	std::cout << "Integer constructor called\n";
+	this->_value = n << this->_fractBits;
 	return;
 }
 
-Fixed& Fixed::operator= (const Fixed& number) {
-
-	this->integer = number.integer;
-	std::cout << "Assignation operator called\n";
-	return *this;
+Fixed::Fixed(float const n)
+{
+	std::cout << "Float constructor called\n";
+	this->_value = (int)roundf(n * (1 << this->_fractBits));
+	return;
 }
 
-Fixed::Fixed (const Fixed& number) {
 
-	this->integer = number.integer;
+Fixed & Fixed::operator= (const Fixed &number)
+{
+	std::cout << "Assignation operator called\n";
+	this->_value = number.getRawBits();
+	return (*this);
+}
+
+Fixed::Fixed(const Fixed &number)
+{
 	std::cout << "Copy constructor called\n";
+	*this = number;
 }
 
 Fixed::~Fixed()
@@ -62,25 +52,29 @@ Fixed::~Fixed()
 	return;
 }
 
-void Fixed::setRawBits ( int const raw) {
-
-	this->integer = raw;
+void Fixed::setRawBits(int const raw)
+{
+	this->_value = raw;
 }
 
-int Fixed::getRawBits ( void ) const {
-
+int Fixed::getRawBits(void) const
+{
 	std::cout << "getRawBits member function called\n";
-	return this->integer;
+	return this->_value;
 }
 
-/* int Fixed::toInt( void )
+float Fixed::toFloat( void ) const
 {
-	this->integer
-	return;
+	return (((float)this->_value / (1 << this->_fractBits)));
 }
 
-float Fixed::operator<< ( const Fixed& num )
+int Fixed::toInt( void ) const
 {
-	return toInt
-	return;
-} */
+	return (this->_value >> this->_fractBits);
+}
+
+std::ostream &operator<<(std::ostream &out, const Fixed &value)
+{
+	out << value.toFloat();
+	return (out);
+}
