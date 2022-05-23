@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 20:17:02 by mmateo-t          #+#    #+#             */
-/*   Updated: 2022/05/23 20:05:21 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2022/05/23 23:51:30 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,21 @@ class Fixed
 		Fixed & operator-(const Fixed &);
 		Fixed & operator*(const Fixed &);
 		Fixed & operator/(const Fixed &);
-		void operator++ ( void );
-		void operator++(int);
-		void operator-- ( void );
-		void operator-- ( int );
+		Fixed & operator++ ( void );
+		Fixed operator++(int);
+		Fixed & operator-- ( void );
+		Fixed operator-- ( int );
+		static Fixed const &min(Fixed const &a, Fixed const &b);
+		static Fixed const &max(Fixed const &a, Fixed const &b);
+		static Fixed &min(Fixed &a, Fixed &b);
+		static Fixed &max(Fixed &a, Fixed &b);
 
-		static Fixed & min(Fixed & const, Fixed & const);
-		static Fixed & max(Fixed & const, Fixed & const);
 };
+
+static Fixed const &min(Fixed const &a, Fixed const &b);
+static Fixed const &max(Fixed const &a, Fixed const &b);
+static Fixed &min(Fixed &a, Fixed &b);
+static Fixed &max(Fixed &a, Fixed &b);
 
 std::ostream &operator<<(std::ostream &, const Fixed &);
 
