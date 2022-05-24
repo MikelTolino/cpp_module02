@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 20:17:11 by mmateo-t          #+#    #+#             */
-/*   Updated: 2022/05/23 20:06:00 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2022/05/24 18:40:36 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,8 +150,6 @@ Fixed & Fixed::operator/(const Fixed &n)
 	this->setRawBits((tmp * (1 << this->_fractBits)) / tmp2);
 	return (*this);
 }
-
-//FIXME: Revisar que este bien
 
 void Fixed::operator++ ( void )
 {

@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 21:45:00 by mmateo-t          #+#    #+#             */
-/*   Updated: 2022/05/23 21:47:27 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2022/05/24 18:20:14 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@ public:
 	Point( void );
 	Point( float const, float const);
 	Point( Point const &);
-	Point & operator= (Point const &);
+	Point &operator= (const Point &);
 	~Point( void );
+	Fixed const &getX( void ) const;
+	Fixed const &getY( void ) const;
 };
 
 #endif

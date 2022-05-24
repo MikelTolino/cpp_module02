@@ -6,7 +6,7 @@
 #    By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 19:29:35 by mmateo-t          #+#    #+#              #
-#    Updated: 2022/05/23 00:25:04 by mmateo-t         ###   ########.fr        #
+#    Updated: 2022/05/24 17:57:50 by mmateo-t         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ OBJS := $(SRCS:%.cpp=%.o)
 CPPFLAGS:= -Wall -Werror -Wextra
 CPPSTD:= -std=c++98
 DEBUG:= -g
-NAME:= Fixed
+NAME:= bsp
 RM:= rm -rf
 
 all: $(NAME)
