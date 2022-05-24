@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 20:17:02 by mmateo-t          #+#    #+#             */
-/*   Updated: 2022/05/23 20:05:21 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2022/05/24 17:13:20 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,23 @@ class Fixed
 		int _value;
 		static const int _fractBits = 8;
 	public:
+
+	//Constructors
 		Fixed( void );
 		Fixed ( int const );
 		Fixed ( float const );
 		Fixed(const Fixed& );
 		Fixed & operator= (const Fixed & );
+
+	//Destructor
 		~Fixed();
+
+	//Member functions
 		int getRawBits( void ) const;
 		void setRawBits ( int const );
 		float toFloat( void ) const;
 		int toInt( void ) const;
+
 		// >, <, >=, <=, == y
 		bool operator> (const Fixed &);
 		bool operator>= (const Fixed &);
@@ -38,17 +45,22 @@ class Fixed
 		bool operator<= (const Fixed &);
 		bool operator== (const Fixed &);
 		bool operator!= (const Fixed &);
+
+		// + - * / ++ --
 		Fixed & operator+(const Fixed &);
 		Fixed & operator-(const Fixed &);
 		Fixed & operator*(const Fixed &);
 		Fixed & operator/(const Fixed &);
-		void operator++ ( void );
-		void operator++(int);
-		void operator-- ( void );
-		void operator-- ( int );
+		Fixed & operator++ ( void );
+		Fixed operator++(int);
+		Fixed & operator-- ( void );
+		Fixed operator-- ( int );
 
-		static Fixed & min(Fixed & const, Fixed & const);
-		static Fixed & max(Fixed & const, Fixed & const);
+		//Max, min
+		static Fixed const &min(Fixed const &a, Fixed const &b);
+		static Fixed const &max(Fixed const &a, Fixed const &b);
+		static Fixed &min(Fixed &a, Fixed &b);
+		static Fixed &max(Fixed &a, Fixed &b);
 };
 
 std::ostream &operator<<(std::ostream &, const Fixed &);

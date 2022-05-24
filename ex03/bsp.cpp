@@ -6,36 +6,31 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:21:35 by mmateo-t          #+#    #+#             */
-/*   Updated: 2022/05/24 18:40:25 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2022/05/24 23:39:57 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Point.hpp"
 
-//TODO: Understand BSP Algorithm
-
-bool bsp( const Point v1, const Point v2, const Point v3, const Point p)
+float sign(Point const p1, Point const p2, Point const p3)
 {
-
-
-
-
-	return false;
+	return (p1.getX().toFloat() - p3.getX().toFloat()) * (p2.getY().toFloat() - p3.getY().toFloat())
+	- (p2.getX().toFloat() - p3.getX().toFloat()) * (p1.getY().toFloat() - p3.getY().toFloat());
 }
 
-inline float sign(Point p1, Point p2, Point p3)
+bool bsp(const Point v1, const Point v2, const Point v3, const Point pt)
 {
-	return (p1.getX().toFloat() - p3.getX().toFloat()) * (p2.getY().toFloat() - p3.getY().toFloat()) - (p2.getX().toFloat() - p3.getX().toFloat()) * (p1.getY().toFloat() - p3.getY().toFloat());
-}
+	float d1;
+	float d2;
+	float d3;
+	bool b1;
+	bool b2;
 
-bool bsp(Point const a, Point const b, Point const c, Point const p)
-{
-	float d1 = sign(p, a, b);
-	float d2 = sign(p, b, c);
-	float d3 = sign(p, c, a);
+	d1 = sign(pt, v1, v2);
+	d2 = sign(pt, v2, v3);
+	d3 = sign(pt, v3, v1);
 
-	bool has_neg = (d1 < 0) || (d2 < 0) || (d3 < 0);
-	bool has_pos = (d1 > 0) || (d2 > 0) || (d3 > 0);
-
-	return !(has_neg && has_pos);
+	b1 = (d1 < 0) || (d2 < 0) || (d3 < 0);
+	b2 = (d1 > 0) || (d2 > 0) || (d3 > 0);
+	return (!(b1 && b2));
 }
